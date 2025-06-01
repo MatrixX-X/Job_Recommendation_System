@@ -77,8 +77,12 @@ def save_scraped_id(job_id, filepath="scraped_job_ids.txt"):
 
 
 # --- Skills (limit to 5–10 for safety per run) ---
+# skills = [
+#     "Data Engineer", "Java Developer"         //DONE
+# ]
+
 skills = [
-    "Python", "SQL", "Spark", "Airflow", "Snowflake"
+    "Data Scientist", "Cybersecurity Specialist, Full Stack Developer"         # to be executed next
 ]
 
 def safe_scrape():
@@ -96,7 +100,7 @@ def safe_scrape():
             HEADERS_SEARCH["referer"]=referer
 
             print(f"\n🔍 Scraping for skill: {skill}")
-            for page in range(1, 3):  # 2 pages per skill
+            for page in range(1, 51):  # 2 pages per skill
                 print(f"  📄 Page {page}...")
                 params = {
                     "noOfResults": 20,
