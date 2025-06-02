@@ -76,13 +76,36 @@ def save_scraped_id(job_id, filepath="scraped_job_ids.txt"):
 # scraped_job_ids = set()
 
 
+
+
+# == Software & Engineering
+# Software Engineer, Backend Developer, Full Stack Developer, Frontend Developer,  DevOps Engineer, Site Reliability Engineer (SRE), Embedded Systems Engineer, Mobile App Developer
+
+# == Data & AI
+# Data Scientist, Data Analyst, Data Engineer, Machine Learning Engineer, NLP Engineer, Business Intelligence (BI) Developer, AI Researcher
+
+# == Cloud & Infrastructure
+# Cloud Engineer, AWS Solution Architect, Azure Cloud Engineer, Cloud Security Engineer, System Administrator
+
+# == Testing & QA
+# QA Engineer, Automation Test Engineer, Performance Test Engineer
+
+# == Product & Management
+# Product Manager, Project Manager, Scrum Master
+
+# == Cybersecurity & Networking
+# Cybersecurity Analyst, Network Engineer
+
+# == Analytics & Business
+# Business Analyst, Financial Analyst
+
 # --- Skills (limit to 5–10 for safety per run) ---
 # skills = [
 #     "Data Engineer", "Java Developer"         //DONE
 # ]
 
 skills = [
-    "Data Scientist", "Cybersecurity Specialist, Full Stack Developer"         # to be executed next
+    "Full Stack Developer", "Software Engineer", "Backend Developer", "Frontend Developer", "DevOps Engineer"        # to be executed next
 ]
 
 def safe_scrape():
