@@ -18,10 +18,6 @@ class ResumeScraper:
         self.headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
         self.csv_filename = csv_filename
 
-        # Initialize CSV and write header
-        with open(self.csv_filename, mode='w', newline='', encoding='utf-8') as f:
-            writer = csv.writer(f)
-            writer.writerow(["Title", "Location", "Posted Date", "Link", "Resume Text"])
 
     def fetch_page(self, url):
         try:
@@ -97,7 +93,7 @@ class ResumeScraper:
                     print(f"Location    : {resume_data['location']}")
                     print(f"Posted Date : {resume_data['posted_date']}")
                     print(f"Link        : {resume_data['link']}")
-                    print(f"Resume Text :\n{resume_data['resume']}")
+                    print("Resume Text :\n" + resume_data['resume'].encode('utf-8', errors='replace').decode('utf-8'))
                     print("=" * 80)
 
                     # Write to CSV
@@ -125,7 +121,50 @@ class ResumeScraper:
 # Run the scraper
 if __name__ == "__main__":
     BASE_URL = "https://www.postjobfree.com"
-    START_URL = f"{BASE_URL}/resumes?q=title%3a(data+scientist)&l=Pune%2c+Maharashtra%2c+India&radius=500"
+    csv_filename = "resumes.csv"
 
-    scraper = ResumeScraper(BASE_URL)
-    scraper.scrape_all_resumes(START_URL)
+    # Initialize CSV only once
+    with open(csv_filename, mode='w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerow(["Title", "Location", "Posted Date", "Link", "Resume Text"])
+
+    # Create a single scraper instance
+    scraper = ResumeScraper(BASE_URL, csv_filename)
+
+    locs = [
+        "/resumes?q=title%3A%28{i}%29&l=kolkata&radius=500",
+        "/resumes?q=title%3A%28{i}%29&l=Bengaluru&radius=500",
+        "/resumes?q=title%3A%28{i}%29&l=Pune&radius=500",
+        "/resumes?q=title%3A%28{i}%29&l=Noida&radius=500",
+    ]
+
+    job_roles = [
+        # Software & Engineering
+        "Software Engineer", "Backend Developer", "Full Stack Developer", "Frontend Developer",
+        "DevOps Engineer", "Site Reliability Engineer (SRE)", "Embedded Systems Engineer", "Mobile App Developer",
+
+        # Data & AI
+        "Data Scientist", "Data Analyst", "Data Engineer", "Machine Learning Engineer",
+        "NLP Engineer", "Business Intelligence (BI) Developer", "AI Researcher",
+
+        # Cloud & Infrastructure
+        "Cloud Engineer", "AWS Solution Architect", "Azure Cloud Engineer",
+        "Cloud Security Engineer", "System Administrator",
+
+        # Testing & QA
+        "QA Engineer", "Automation Test Engineer", "Performance Test Engineer",
+
+        # Product & Management
+        "Product Manager", "Project Manager", "Scrum Master",
+
+        # Cybersecurity & Networking
+        "Cybersecurity Analyst", "Network Engineer",
+
+        # Analytics & Business
+        "Business Analyst", "Financial Analyst"
+    ]
+
+    for job in job_roles:
+        for loc in locs:
+            start_url = f"{BASE_URL}/{loc.format(i=job)}"
+            scraper.scrape_all_resumes(start_url)
