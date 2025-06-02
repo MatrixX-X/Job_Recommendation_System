@@ -104,9 +104,11 @@ def save_scraped_id(job_id, filepath="scraped_job_ids.txt"):
 #     "Data Engineer", "Java Developer"         //DONE
 # ]
 
-skills = [
-    "Full Stack Developer", "Software Engineer", "Backend Developer", "Frontend Developer", "DevOps Engineer"        # to be executed next
-]
+# skills = [
+#     "Full Stack Developer", "Software Engineer", "Backend Developer", "Frontend Developer", "DevOps Engineer"        # DONE
+# ]
+
+skills = ["Site Reliability Engineer", "Embedded Systems Engineer", "Mobile App Developer"]     # to be executed
 
 def safe_scrape():
     scraped_job_ids = load_scraped_ids()
