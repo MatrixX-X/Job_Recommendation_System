@@ -105,10 +105,11 @@ def save_scraped_id(job_id, filepath="scraped_job_ids.txt"):
 # ]
 
 # skills = [
-#     "Full Stack Developer", "Software Engineer", "Backend Developer", "Frontend Developer", "DevOps Engineer"        # DONE
+#     "Full Stack Developer", "Software Engineer", "Backend Developer", "Frontend Developer", "DevOps Engineer", "Site Reliability Engineer", "Embedded Systems Engineer", "Mobile App Developer"        # DONE
+#       "Data Scientist", "Data Analyst", "Machine Learning Engineer", "NLP Engineer",  "Business Intelligence (BI) Developer", "AI Researcher"
 # ]
 
-skills = ["Site Reliability Engineer", "Embedded Systems Engineer", "Mobile App Developer"]     # to be executed
+skills = ["Cloud Engineer", "AWS Solution Architect", "Azure Cloud Engineer", "Cloud Security Engineer", "System Administrator"]     # to be executed
 
 def safe_scrape():
     scraped_job_ids = load_scraped_ids()
@@ -146,6 +147,10 @@ def safe_scrape():
                         time.sleep(60)
                         continue
                     jobs = res.json().get("jobDetails", [])
+                    
+                    if not jobs or not isinstance(jobs, list) or len(jobs) == 0:
+                        print(f"    ⛔ No more jobs found on page {page}. Stopping skill.")
+                        break  # exit page loop
 
                     for job in jobs:
                         job_id = job.get("jobId", "")

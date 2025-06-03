@@ -23,11 +23,11 @@ def main():
     time.sleep(2)  # Wait for the login form to appear
 # Locate and enter username
     username_field = driver.find_element(By.XPATH, "//div[@class='form-row']/input[@type='text']")
-    username_field.send_keys("") # enter your email here
+    username_field.send_keys("wickkuldeep8@gmail.com") # enter your email here
 
 # Locate and enter password
     password_field = driver.find_element(By.XPATH, "//div[@class='form-row']/input[@type='password']")
-    password_field.send_keys("") # enter your password here
+    password_field.send_keys("Project@dbda") # enter your password here
 
     # Locate and click the login button
     login_button = driver.find_element(By.XPATH, "//button[@type='submit' and contains(@class, 'loginButton')]")
@@ -38,6 +38,8 @@ def main():
     # Wait for the search input field to appear
     wait = WebDriverWait(driver, 10)
     search_field = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "suggestor-input")))
+
+    # search_field = driver.find_element(By.XPATH, "//span[text()='Search jobs here']")
 
     # Enter "Java jobs" in the search field
     search_field.send_keys("Data Engineer jobs")
