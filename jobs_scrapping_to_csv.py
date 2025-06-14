@@ -107,11 +107,11 @@ def save_scraped_id(job_id, filepath="scraped_job_ids.txt"):
 # skills = [
 #     "Full Stack Developer", "Software Engineer", "Backend Developer", "Frontend Developer", "DevOps Engineer", "Site Reliability Engineer", "Embedded Systems Engineer", "Mobile App Developer"        # DONE
 #       "Data Scientist", "Data Analyst", "Machine Learning Engineer", "NLP Engineer",  "Business Intelligence (BI) Developer", "AI Researcher",
-#       "Cloud Engineer", "AWS Solution Architect", "Azure Cloud Engineer", "Cloud Security Engineer", "System Administrator", "QA Engineer", "Automation Test Engineer", "Performance Test Engineer"
-#       
+#       "Cloud Engineer", "AWS Solution Architect", "Azure Cloud Engineer", "Cloud Security Engineer", "System Administrator", "QA Engineer", "Automation Test Engineer", "Performance Test Engineer",
+#       "Product Manager", "Project Manager", "Scrum Master"
 # ]
 
-skills = ["Product Manager", "Project Manager", "Scrum Master"]     # to be executed
+skills = ["Cybersecurity Analyst", "Network Engineer", "Business Analyst", "Financial Analyst"]     # to be executed
 
 def safe_scrape():
     scraped_job_ids = load_scraped_ids()
